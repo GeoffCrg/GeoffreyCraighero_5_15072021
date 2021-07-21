@@ -6,6 +6,6 @@ class Camera {
     this.id = _id;
     this.description = description;
     this.lenses = lenses;
-
+    this.quantity = quantity;
   }
-}
+};

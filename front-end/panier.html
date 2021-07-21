@@ -10,11 +10,10 @@
       crossorigin="anonymous"
     ></script>
 
-    <title>Produit</title>
+    <title>Panier</title>
   </head>
-  
+ 
  <body>
-   <script src="camera.js"></script>
     <header>
       <h1>Orinoco photographie</h1>
       <div
@@ -27,13 +26,36 @@
         <img src="/front-end/img/img-index.jpg" alt="" />
       </div>
      <section >
-      <div id="produit">       </div>
-<div id="btn">
-  <a href="panier.html" ><button id="btn-basket" type="submit">Ajouter au panier</button></a>
-
-</div>
+      <div id="panier-recap">
+        <h2>Les produits sélectionnées</h2>
+   
     </section>
+<section>
+<div id="containerFormulaire">
 
+<h2>Validez votre formulaire pour passer la commande</h2>
+
+<form action="#">
+<label for="prenom">Prenom</label>
+<input type="text" id="prenom" name="prenom" required>
+
+<label for="nom">nom</label>
+<input type="text" id="nom" name="nom" required>
+
+<label for="adresse">adresse</label>
+<input type="text" id="adresse" name="adresse" required>
+
+<label for="ville">Ville</label>
+<input type="text" id="ville" name="ville" required>
+
+<label for="ville">E-mail</label>
+<input type="email" id="e-mail" name="E-mail" required>
+
+<button id="envoyerFormulaire" type="submit" name="evoyerFormulaire">Envoyer votre formulaire</button>
+
+</form>
+</div>
+</section>
 <script src="produit.js"></script>
 
      <footer>
@@ -52,5 +74,5 @@
     </ul>
   </footer>
    </body>
-  
+  <script src="panier.js"></script> 
 </html>
