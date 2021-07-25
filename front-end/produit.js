@@ -14,6 +14,7 @@ fetch(`http://localhost:3000/api/cameras/${ID}`)
 
 let produit = document.getElementById("produit");
 
+
 const display = (camera) => {
   produit.innerHTML += `
     <article id="cardsProduct"">
@@ -29,6 +30,10 @@ const display = (camera) => {
           <option  value="">--choisisez une lentille--</option>
         </select>
         </form>
+                <label for="quantite_produit"></label>
+        <select name="quantite_produit" id="quantiteProduit" >
+        </select>
+        </form>
         
     </article>`;
   //Choix des lentilles
@@ -38,7 +43,21 @@ const display = (camera) => {
       "select"
     ).innerHTML += `<option id="option" value="${lenses}">${lenses}</option>`;
   }
+
+  //Afficher la quantité dans le formulaire
+const positionQuantite = document.getElementById("quantiteProduit");
+  positionQuantite.innerHTML = structureQuantite;
+
+  console.log(positionQuantite.value);
+  //Choisir la quantité possible
 };
+
+const structureQuantite = `
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    `;
 
 //Fonction pour ajouter un produit au panier
 
@@ -49,18 +68,27 @@ const btn_addBasket = document.getElementById("btn-basket");
 const click = (camera) => {
   btn_addBasket.addEventListener("click", (event) => {
     event.preventDefault();
+
     //Prendre le choix de lenses
     let idForm = document.getElementById("option");
-    let value = idForm;
-    console.log(idForm.value);
+    let valueL = idForm;
+    console.log(idForm.valueL);
+    let qtyForm = document.getElementById("quantiteProduit")
+    let value = qtyForm;
+    console.log(qtyForm.value)
+
+
     let SelectProduct = {
       idProduit: camera.id._id,
       nomProduit: camera.name,
-      prixProduit: camera.price,
+      prixProduit: (camera.price *qtyForm.value),
       imgProduit: camera.imageUrl,
-      LenseProduct: idForm.value,
+      LenseProduct: idForm.valueL,
+      quantiteProduit: qtyForm.value,
     };
     console.log(SelectProduct);
+
+ 
     ///--------------------Local storage---------------///
 
     //stocker la récuperation des valeurs du formulaire dans le local storage

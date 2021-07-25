@@ -113,34 +113,37 @@ section {
   font-size: 30px;
 }
 
-#panierContent{
+#panierContent {
   display: flex;
   flex-wrap: wrap;
   width: 600px;
   height: 120px;
   justify-content: space-between;
-
 }
 
-
-
-
-
-#imgRecap{
-width: 80px;
-height: 80px;
-
+#imgRecap {
+  width: 80px;
+  height: 80px;
 }
 
-.btnSupp{
+.btnSupp {
   height: 40px;
 }
 
-#containerFormulaire{
-width: 200px;
-height: 600px;
+#containerFormulaire {
+  width: 200px;
+  height: 600px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+
+.champsManquant {
+  color: red;
+  font-size: 10px;
+}
+
+#quantiteProduit {
+  width: 200px;
 }

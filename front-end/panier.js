@@ -31,7 +31,9 @@ if (InLocalStorage === null || InLocalStorage == 0) {
           InLocalStorage[i].imgProduit
         } alt="photos produits" />
         
-          <div> quantité 1 ${InLocalStorage[i].nomProduit}</div>
+          <div> quantité ${InLocalStorage[i].quantiteProduit} ${
+        InLocalStorage[i].nomProduit
+      }</div>
           <div>${InLocalStorage[i].prixProduit / 100} €</div>
           <button class="btnSupp">Supprimer le produit</button>
         </div>
@@ -118,23 +120,23 @@ const addHTMLFormulaire = () => {
 <h2>Validez votre formulaire pour passer la commande</h2>
 
 <form action="#">
-<label for="prenom">Prenom</label>
+<label for="prenom">Prenom</label><span id="prenomManquant" class="champsManquant"></span>
 <input type="text" id="prenom" name="prenom" required>
 
-<label for="nom">nom</label>
+<label for="nom">nom</label><span id="nomManquant" class="champsManquant"></span>
 <input type="text" id="nom" name="nom" required>
 
-<label for="adresse">adresse</label>
+<label for="adresse">adresse</label><span id="adresseManquant" class="champsManquant"></span>
 <input type="text" id="adresse" name="adresse" required>
 
-<label for="ville">Ville</label>
+<label for="ville">Ville</label><span id="villeManquant" class="champsManquant"></span>
 <input type="text" id="ville" name="ville" required>
 
-<label for="E-mail">E-mail</label>
+<label for="E-mail">E-mail</label><span id="emailManquant" class="champsManquant"></span>
 <input type="email" id="e-mail" name="E-mail" required>
 
 <button id="envoyerFormulaire" type="submit" name="evoyerFormulaire">Envoyer votre formulaire</button>
-
+<div class="champsManquant" id="verifFormulaire"></div>
 </form>
 
 `;
@@ -178,46 +180,59 @@ btnSubmit.addEventListener("click", (event) => {
   function controlePrenom() {
     const checkPrenom = formulaireValues.prenom;
     if (regExPrenomNomVille(checkPrenom)) {
+      document.querySelector("#prenomManquant").textContent = "";
       console.log("OK");
       return true;
     } else {
-      alert(textAlertForm("prenom"));
+      document.querySelector("#prenomManquant").textContent =
+        "Veuillez bien remplir ce champ";
       return false;
     }
   }
   function controleNom() {
     const checkNom = formulaireValues.nom;
     if (regExPrenomNomVille(checkNom)) {
+      document.querySelector("#nomManquant").textContent = "";
       return true;
     } else {
-      alert(textAlertForm("nom"));
+      document.querySelector("#nomManquant").textContent =
+        "Veuillez bien remplir ce champ";
       return false;
     }
   }
   function controleVille() {
     const checkVille = formulaireValues.ville;
     if (regExPrenomNomVille(checkVille)) {
+      document.querySelector("#villeManquant").textContent = "";
       return true;
     } else {
-      alert(textAlertForm("ville"));
+      document.querySelector("#villeManquant").textContent =
+        "Veuillez bien remplir ce champ";
+
       return false;
     }
   }
   function controleAdresse() {
     const checkAdresse = formulaireValues.adresse;
     if (regExAdresse(checkAdresse)) {
+      document.querySelector("#adresseManquant").textContent = "";
       return true;
     } else {
-      alert("Veuillez renseignez une adresse valide ");
+      document.querySelector("#adresseManquant").textContent =
+        "Veuillez renseignez une adresse valide ";
+
       return false;
     }
   }
   function controleEmail() {
     const checkEmail = formulaireValues.email;
     if (regExEmail(checkEmail)) {
+      document.querySelector("#emailManquant").textContent = "";
       return true;
     } else {
-      alert("Veuillez renseigner une adresse  email valide");
+      document.querySelector("#emailManquant").textContent =
+        "Veuillez renseigner une adresse  email valide";
+
       return false;
     }
   }
@@ -231,7 +246,9 @@ btnSubmit.addEventListener("click", (event) => {
     //Mettre l'objet formulaireValues dans le local storage
     localStorage.setItem("formulaireValues", JSON.stringify(formulaireValues));
   } else {
-    alert("Veuillez bien remplir le formulaire");
+    document.querySelector("#verifFormulaire").textContent =
+      "Veuillez bien remplir le formulaire";
+    console.log("ko");
   }
 
   fetch("http://localhost:3000/api/cameras"),
