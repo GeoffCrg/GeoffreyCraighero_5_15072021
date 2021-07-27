@@ -1,6 +1,8 @@
 const ID = window.location.search.substring(1);
-
+//stock de l'id
 let params = new URL(document.location).searchParams;
+console.log(params)
+
 fetch(`http://localhost:3000/api/cameras/${ID}`)
   .then((response) => response.json())
   .then(function (data) {
@@ -13,6 +15,10 @@ fetch(`http://localhost:3000/api/cameras/${ID}`)
   });
 
 let produit = document.getElementById("produit");
+
+
+
+
 
 
 const display = (camera) => {
@@ -79,7 +85,7 @@ const click = (camera) => {
 
 
     let SelectProduct = {
-      idProduit: camera.id._id,
+      idProduit: camera.id,
       nomProduit: camera.name,
       prixProduit: (camera.price *qtyForm.value),
       imgProduit: camera.imageUrl,
