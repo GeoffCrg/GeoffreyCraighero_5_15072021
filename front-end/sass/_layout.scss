@@ -1,0 +1,32 @@
+#baniere {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+  img {
+    width: 100%;
+    border-radius: 10px;
+    position: relative;
+
+    height: 400px;
+  }
+  h1{
+      position: absolute;
+      left: 10px; 
+      color: black;
+      
+  }
+  h2{
+            position: absolute;
+      left: 10px;
+      bottom: 20px; 
+      color: black;
+      align-self: flex-start;
+      font-size: 30px;
+      text-align: center;
+      font-style: italic;
+
+  }
+}

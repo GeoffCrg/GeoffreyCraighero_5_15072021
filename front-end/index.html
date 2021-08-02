@@ -4,39 +4,51 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./sass/style.css" />
     <script
       src="https://kit.fontawesome.com/d3195d54e4.js"
       crossorigin="anonymous"
     ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Orinoco</title>
   </head>
 
   <body>
     <header>
-      <h1>Orinoco photographie</h1>
-      <div id="panier">Mon panier<i class="fas fa-shopping-cart"></i></div>
+      <img src="./img/logo-orinoco.png" alt="">
+      <nav>
+        <a href="../pages/panier.html"
+          ><div id="panier">Mon panier<i class="fas fa-shopping-cart"></i></div
+        ></a>
+      </nav>
     </header>
-
-    <div
-      id="photo
-            "
-    >
-      <img src="/front-end/img/img-index.jpg" alt="" />
+    <div id="baniere">
+      <img src="./img/artiste-photographe.jpg" alt="Prise de photographie" />
+      <h1 id="title">OrinoPhotos</h1>
+      <h2>
+        "Photographier c’est mettre sur <br />
+        la même ligne de mire <br> tête, l’oeil et le coeur." <br />
+        <br> Henri Cartier-Bresson
+      </h2>
     </div>
 
     <section id="container"></section>
 
-    <script src="index.js"></script>
-    <script src="camera.js"></script>
+    <script src="./JS/index.js"></script>
+    <script src="./JS/camera.js"></script>
 
     <footer>
       <div id="reseaux">
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-pinterest"></i></a>
+        <a href="#"><i class="fab fa-instagram" id="logoReseau"></i></a>
+        <a href="#"><i class="fab fa-facebook-f" id="logoReseau"></i></a>
+        <a href="#"><i class="fab fa-twitter" id="logoReseau"></i></a>
+        <a href="#"><i class="fab fa-pinterest" id="logoReseau"></i></a>
       </div>
       <ul>
         <li>Conditons gérérales de ventes</li>

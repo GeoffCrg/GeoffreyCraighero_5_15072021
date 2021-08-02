@@ -1,0 +1,100 @@
+h1,
+h2,
+p,
+li,
+a,
+form {
+  font-family: "Roboto Condensed", sans-serif;
+  color: #eeee;
+}
+
+body {
+  background-color: #055052;
+}
+header {
+  display: flex;
+  background-color: #284E78;
+  width: 100%;
+  height: 300px;
+  justify-content: flex-start;
+  justify-content: space-between;
+}
+#title {
+  font-size: 70px;
+}
+nav {
+  display: flex;
+  align-self: flex-end;
+}
+#panier {
+  color: #eeee;
+  display: flex;
+  align-self: flex-end;
+  font-size: 30px;
+  margin: 0 10px 10px 0;
+}
+
+#photo {
+  height: 300px;
+  width: 100%;
+}
+section {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#cardsProduct {
+  height: 600px;
+  width: 550px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: #284E78;
+  margin-top: 20px;
+  border-radius: 20px;
+  box-shadow: #2C2E43 5px 10px 5px;
+}
+
+#imgProduit {
+  width: 100%; 
+  height: 300px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border: black, 1px, 1px 1px;
+}
+p,
+h2,
+h1,
+a,
+li {
+  list-style-type: none;
+  color: #eeeeee;
+}
+
+footer {
+  display: flex;
+  height: 200px;
+  justify-content: center;
+  flex-direction: column;
+}
+#reseaux {
+  display: flex;
+  width: 100%;
+  margin-top: 40px;
+
+  justify-content: space-around;
+}
+
+#logoReseau {
+  font-size: 60px;
+}
+
+ul,
+li {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+}
