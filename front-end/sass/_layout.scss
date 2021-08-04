@@ -1,32 +1,116 @@
+header {
+  display: flex;
+
+  width: 100%;
+  height: 170px;
+  justify-content: flex-start;
+
+  justify-content: space-between;
+  #oriLogo {
+    height: 200px;
+  }
+}
+nav {
+  display: flex;
+  align-self: flex-end;
+  
+  #panier ,#Accueil{
+    color: #b27259;
+    display: flex;
+    text-decoration: none;
+
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 50px;
+    white-space: nowrap;
+    display: flex;
+
+    font-size: 30px;
+    font-weight: 800;
+    margin: 0 30px 0px 0px;
+  
+    position: relative;
+  }
+  #panier::after {
+    content: "";
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    left: 0;
+    bottom: 0px;
+    background-color: #b27259;
+    border-radius: 10px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 500ms ease;
+  }
+}
+ #panier:hover::after {
+  transform: scaleX(1);
+}
 #baniere {
   width: 100%;
+  height: 550px;
+  max-width: 1700px;
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+
   margin-bottom: 50px;
+  position: relative;
 
-  img {
+  background: url(https://blog.labophotos.fr/wp-content/uploads/2018/05/photographes-instagram.jpeg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100%;
+  object-fit: cover;
+
+  h1 {
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    color: #d1ceb2;
+  }
+  h2 {
+    position: absolute;
+    right: 20px;
+    top: 200px;
+    color: #d1ceb2;
+    align-self: flex-start;
+    font-size: 30px;
+    text-align: center;
+    font-style: italic;
+  }
+}
+
+footer {
+  display: flex;
+  height: 200px;
+  justify-content: center;
+  flex-direction: column;
+
+  #reseaux {
+    display: flex;
     width: 100%;
-    border-radius: 10px;
-    position: relative;
+    margin-top: 40px;
 
-    height: 400px;
+    justify-content: space-between;
+    #logoReseau {
+      font-size: 50px;
+      color: #b27259;
+    }
   }
-  h1{
-      position: absolute;
-      left: 10px; 
-      color: black;
-      
-  }
-  h2{
-            position: absolute;
-      left: 10px;
-      bottom: 20px; 
-      color: black;
-      align-self: flex-start;
-      font-size: 30px;
-      text-align: center;
-      font-style: italic;
 
+  ul,
+  li {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    color: #b27259;
+    margin-top: 30px;
+    margin-right: 10px;
+    justify-content: space-between;
+    list-style-type: none;
   }
 }

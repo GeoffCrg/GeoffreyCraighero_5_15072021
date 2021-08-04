@@ -1,0 +1,78 @@
+@media screen and (min-width: 375px) and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    nav {
+      justify-content: center;
+      width: 100vw;
+    }
+  }
+
+  #baniere {
+    height: 200px;
+    h1 {
+      font-size: 30px;
+    }
+    h2 {
+      font-size: 15px;
+      top: 80px;
+    }
+    background-size: 180%;
+  }
+
+  footer {
+    align-items: center;
+    #reseaux {
+      width: 90%;
+    }
+    li {
+      width: 90%;
+      font-size: 12px;
+      text-align: center;
+    }
+  }
+
+  //page produit//
+  #cardProduct {
+    flex-direction: column;
+    align-items: center;
+    align-content: space-between;
+    #imgdesc {
+      width: 90%;
+      margin-bottom: 50px;
+    }
+  }
+  //page panier //
+
+  #displayFormulaire {
+    display: flex;
+    justify-content: center;
+  }
+  #containerFormulaire {
+    width: 90%;
+    height: auto;
+  }
+  #panierContent {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    width: 110%;
+    height: 220px;
+    img {
+      width: 100%;
+      border-radius: 20px;
+    }
+  }
+
+  //page confirmation//
+  #displayConfirmation {
+    display: flex;
+    justify-content: center;
+  }
+
+  #confirmation {
+      text-align: center;
+    font-size: 18px;
+    width: 95%;
+  }
+}

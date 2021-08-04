@@ -2,7 +2,6 @@ const ID = window.location.search.substring(1);
 //stock de l'id
 let params = new URL(document.location).searchParams;
 
-
 fetch(`http://localhost:3000/api/cameras/${ID}`)
   .then((response) => response.json())
   .then(function (data) {
@@ -18,29 +17,33 @@ let produit = document.getElementById("produit");
 
 const display = (camera) => {
   produit.innerHTML += `
-    <article id="cardsProduct"">
-        <img src=${camera.imageUrl} alt="photos produits" />
-        <div class="bloqueDescription">
+    <article id="cardProduct"">
+    <div id="imgdesc">
+        <img src=${camera.imageUrl} alt="photos produits" /><p>${
+    camera.description
+  }</p></div>
+        <div class="bloqDescription">
             <h2> ${camera.name}</h2>
             <p>${camera.price / 100}€</p>
-        </div>
-        <p>${camera.description}</p>
         
-        <div id="Choice">
         
         <form>
-        <label for="option_produit"></label>
+        <label for="option_produit">choisisez une lentille</label>
         <select name="option_produit" id="select" >
-          <option  value="">--choisisez une lentille--</option>
+          <option  value="">choisisez une lentille</option>
         </select>
         </form>
-                <label for="quantite_produit"></label>
+        <form>   <label for="quantite_produit" >Choisisez la quantité</label>
         <select name="quantite_produit" id="quantiteProduit" >
         </select>
         </form>
 
-
+        
+        
         </div>
+        
+        
+
     </article>`;
   //Choix des lentilles
 
@@ -73,8 +76,6 @@ const btn_addBasket = document.getElementById("btn-basket");
 
 const click = (camera) => {
   btn_addBasket.addEventListener("click", (event) => {
-    
-
     //Prendre le choix de lenses
     let idForm = document.getElementById("option");
     let valueL = idForm;
@@ -86,7 +87,7 @@ const click = (camera) => {
     let SelectProduct = {
       idProduit: camera.id,
       nomProduit: camera.name,
-      prixProduit: (camera.price * qtyForm.value),
+      prixProduit: camera.price * qtyForm.value,
       imgProduit: camera.imageUrl,
       LenseProduct: idForm.valueL,
       quantiteProduit: qtyForm.value,

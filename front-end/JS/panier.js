@@ -29,9 +29,9 @@ if (camera === null || camera == 0) {
         
         
         <img id="imgRecap" src=${camera[i].imgProduit} alt="photos produits" />
-        
+         <p> ${camera[i].nomProduit}</p>
           <p> Quantité ${camera[i].quantiteProduit} </p> 
-          <p> ${camera[i].nomProduit}</p>
+         
           <p>${camera[i].prixProduit / 100} €</p>
           <button class="btnSupp">Supprimer le produit</button>
         </div>
@@ -275,30 +275,27 @@ btnSubmit.addEventListener("click", (event) => {
   localStorage.setItem("prixTotal", JSON.stringify(prixTotal));
   console.log(sendOrder);
 
-
-   // APEL API AVEC FETCH // ENVOIE DES DONNEES AVEC POST
-   fetch("http://localhost:3000/api/cameras/order", {
-     method: "POST",
-     headers: {
-       "content-type": "application/json",
-     },
-     mode: "cors",
-     body: sendOrder,
-   })
-     .then(function (response) {
-       return response.json();
-     })
-     .then(function (r) {
-       window.location.assign("confirmation.html?orderId=" + r.orderId);
-       localStorage.setItem("contact", JSON.stringify(r.contact));
-     })
-     //SI PROBLEME API
-     .catch(function (err) {
-       console.log("fetch Error");
-     });
- }
-);
-
+  // APEL API AVEC FETCH // ENVOIE DES DONNEES AVEC POST
+  fetch("http://localhost:3000/api/cameras/order", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    mode: "cors",
+    body: sendOrder,
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (r) {
+      window.location.assign("confirmation.html?orderId=" + r.orderId);
+      localStorage.setItem("contact", JSON.stringify(r.contact));
+    })
+    //SI PROBLEME API
+    .catch(function (err) {
+      console.log("fetch Error");
+    });
+});
 
 ///// mettre le formulaire et les produits du panier pour les envoyé vers le serveurs
 ///envoie de l'objet au serveur

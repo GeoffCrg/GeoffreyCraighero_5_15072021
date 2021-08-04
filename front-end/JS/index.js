@@ -18,14 +18,22 @@ fetch(MAIN_URL)
 let container = document.getElementById("container");
 
 const display = (camera) => {
+
   container.innerHTML += `
     <article id="cardsProduct" class="produit">
+    
         <img src=${camera.imageUrl} id="imgProduit" alt="photos produits" />
         <div class="bloqueDescription">
-            <h2> ${camera.name}</h2>
-            <p>${camera.price / 100}€</p>
+            <h2 id="nameProduct"> ${camera.name}</h2>
+            <p id="descriptionProduct">${camera.description}</p>
+            <p id="priceProduct">${
+              camera.price / 100
+            }€</p ><a id="learnMore" href="./pages/produit.html?${
+    camera.id
+  }"> En savoir plus</a>
         </div>
-        <p>${camera.description}</p>
-       <a href="./pages/produit.html?${camera.id}"> En savoir plus</a>
+        
+       
     </article>`;
+
 };
