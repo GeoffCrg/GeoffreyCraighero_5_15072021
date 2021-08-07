@@ -14,11 +14,10 @@ fetch(MAIN_URL)
   .catch(function (err) {
     console.log("fetch Error");
   });
-
+//insertion du html dans la zone d'affichage
 let container = document.getElementById("container");
 
 const display = (camera) => {
-
   container.innerHTML += `
     <article id="cardsProduct" class="produit">
     
@@ -31,9 +30,6 @@ const display = (camera) => {
             }€</p ><a id="learnMore" href="./pages/produit.html?${
     camera.id
   }"> En savoir plus</a>
-        </div>
-        
-       
+        </div>      
     </article>`;
-
 };
