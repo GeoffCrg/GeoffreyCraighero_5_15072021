@@ -1,15 +1,15 @@
-//RECUPERATION DES DONNEES DE L URL
+//Recuperation des donnees de l'url
 let paramsUrl = new URL(window.location).searchParams;
 
 let orderId = paramsUrl.get("orderId");
 
-//RECUPERATION DES DONNEES CONTACT
+//Recuperation des contact
 let contact = JSON.parse(localStorage.getItem("contact"));
 
-// RECUPERATION DU PRIX TOTAL
+// Recuperation du prix total
 let prixTotal = JSON.parse(localStorage.getItem("prixTotal"));
 
-// AFFICHAGE HTML
+// Affichage Html
 function display() {
   confirmation.innerHTML += `
         <p>

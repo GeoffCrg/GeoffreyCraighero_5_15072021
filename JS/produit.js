@@ -1,4 +1,5 @@
 const ID = window.location.search.substring(1);
+
 //stock de l'id
 let params = new URL(document.location).searchParams;
 
@@ -14,7 +15,7 @@ fetch(`http://localhost:3000/api/cameras/${ID}`)
   });
 
 let produit = document.getElementById("produit");
-
+//Insertion du html
 const display = (camera) => {
   produit.innerHTML += `
     <article id="cardProduct"">
@@ -68,21 +69,21 @@ const structureQuantite = `
     <option value="4">4</option>
     `;
 
-//Fonction pour ajouter un produit au panier
-
-//selectionner le bouton pour envoyer au panier
-
-const btn_addBasket = document.getElementById("btn-basket");
-
+    
+    //selectionner le bouton pour envoyer au panier
+    
+    const btn_addBasket = document.getElementById("btn-basket");
+    
+    //Fonction pour ajouter un produit au panier
 const click = (camera) => {
   btn_addBasket.addEventListener("click", (event) => {
     //Prendre le choix de lenses
     let idForm = document.getElementById("option");
     let valueL = idForm;
-    console.log(idForm.valueL);
+    
     let qtyForm = document.getElementById("quantiteProduit");
     let value = qtyForm;
-    console.log(qtyForm.value);
+    
 
     let SelectProduct = {
       idProduit: camera.id,
@@ -93,13 +94,11 @@ const click = (camera) => {
       quantiteProduit: qtyForm.value,
     };
     console.log(SelectProduct);
+    onclick
 
     ///--------------------Local storage---------------///
 
     //stocker la récuperation des valeurs du formulaire dans le local storage
-
-    //declaration de la variable///
-    //fonction fenetre popup
 
     //Convertir le javascript en json
     let InLocalStorage = JSON.parse(localStorage.getItem("produit"));

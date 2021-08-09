@@ -1,11 +1,9 @@
 header {
   display: flex;
-
+  justify-content: flex-start;
+  justify-content: space-between;
   width: 100%;
   height: 170px;
-  justify-content: flex-start;
-
-  justify-content: space-between;
   #oriLogo {
     height: 200px;
   }
@@ -13,81 +11,73 @@ header {
 nav {
   display: flex;
   align-self: flex-end;
-  
-  #panier ,#Accueil{
-    color: #b27259;
-    display: flex;
-    text-decoration: none;
 
-    justify-content: center;
+  #panier,
+  #Accueil {
+    display: flex;
+    position: relative;
     align-items: center;
+    justify-content: center;
+    color: #b27259;
     width: auto;
     height: 50px;
+    text-decoration: none;
     white-space: nowrap;
-    display: flex;
-
     font-size: 30px;
     font-weight: 800;
     margin: 0 30px 0px 0px;
-  
-    position: relative;
   }
   #panier::after {
     content: "";
     position: absolute;
     height: 4px;
     width: 100%;
-    left: 0;
-    bottom: 0px;
     background-color: #b27259;
     border-radius: 10px;
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 500ms ease;
+    bottom: 0px;
+    left: 0;
   }
 }
- #panier:hover::after {
+#panier:hover::after {
   transform: scaleX(1);
 }
 #baniere {
-  width: 100%;
-  height: 550px;
-  max-width: 1700px;
   display: flex;
   justify-content: center;
-
-  margin-bottom: 50px;
+  width: 100%;
+  height: 500px;
   position: relative;
-
   background: url(https://blog.labophotos.fr/wp-content/uploads/2018/05/photographes-instagram.jpeg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100%;
-  object-fit: cover;
-
+  object-fit: none;
+  margin-bottom: 50px;
   h1 {
     position: absolute;
+    color: #d1ceb2;
     top: 50px;
     left: 10px;
-    color: #d1ceb2;
   }
   h2 {
     position: absolute;
-    right: 20px;
-    top: 200px;
     color: #d1ceb2;
-    align-self: flex-start;
     font-size: 30px;
     text-align: center;
     font-style: italic;
+    top: 200px;
+    left: 60%;
   }
 }
 
 footer {
   display: flex;
-  height: 200px;
   justify-content: center;
   flex-direction: column;
+  height: 200px;
 
   #reseaux {
     display: flex;
@@ -95,22 +85,24 @@ footer {
     margin-top: 40px;
 
     justify-content: space-between;
-    #logoReseau {
+    .fab {
       font-size: 50px;
       color: #b27259;
     }
   }
 
   ul,
-  li {
-    width: 100%;
+  li,
+  a {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+    width: 100%;
     color: #b27259;
-    margin-top: 30px;
-    margin-right: 10px;
     justify-content: space-between;
     list-style-type: none;
+    text-decoration: none;
+    margin-right: 10px;
+    margin-top: 30px;
   }
 }

@@ -19,10 +19,10 @@ if (camera === null || camera == 0) {
 } else {
   //Si le panier n'est pas vide alors je prend mes produits dans le local storage
   let structureProduitPanier = [];
-  let addIdBasket = [];
   for (i = 0; i < camera.length; i++) {
     console.log("Nombre de produit" + " " + camera.length);
 
+    //injection du code html
     structureProduitPanier =
       structureProduitPanier +
       `       <div id="panierContent">
@@ -39,14 +39,13 @@ if (camera === null || camera == 0) {
         
       `;
 
-    // BOUCLE INCREMENT ID PRODUIT
-  }
-
+    }
+    
+    // Boucle pour ajouter chaque cameras
   if (i === camera.length) {
     displayPanier.innerHTML = structureProduitPanier;
   }
 
-  //injection du code html
 }
 
 //Gestion du boutton pour supprimer l'article
@@ -115,12 +114,12 @@ displayPanier.insertAdjacentHTML("beforeend", affichageprixTotal);
 //Affichage du formulaire
 
 const addHTMLFormulaire = () => {
-  //Selection element du DOM pour le positionnement du html
+  
   const DOMFormulaire = document.querySelector("#containerFormulaire");
 
   const displayFormulaire = `
 
-<h2>Validez votre formulaire pour passer la commande</h2>
+<h2 class="formTitle">Validez votre formulaire pour passer la commande</h2>
 
 <form action="#"id="form">
 <label for="firstName">Prenom</label><span id="firstNameManquant" class="champsManquant"></span>
@@ -136,7 +135,7 @@ const addHTMLFormulaire = () => {
 <input type="text" id="city" name="city" required>
 
 <label for="E-mail">E-mail</label><span id="emailManquant" class="champsManquant"></span>
-<input type="email" id="e-mail" name="E-mail" required>
+<input type="email" id="email" name="E-mail" required>
 
 <button id="envoyerFormulaire" type="submit" name="evoyerFormulaire">Envoyer votre formulaire</button>
 <div class="champsManquant" id="verifFormulaire"></div>
@@ -147,16 +146,16 @@ const addHTMLFormulaire = () => {
 };
 
 addHTMLFormulaire();
-//addEventListener boutton
 //selection du boutton Envoyer le formulaire
 const btnSubmit = document.querySelector("#envoyerFormulaire");
 
 for (let i = 2; i < camera.length; i++) {
   addIdBasket.push(camera[i].idProduit);
-
+  
   console.log(addIdBasket);
 }
 
+//addEventListener boutton
 btnSubmit.addEventListener("click", (event) => {
   event.preventDefault();
 
@@ -166,7 +165,7 @@ btnSubmit.addEventListener("click", (event) => {
     lastName: document.querySelector("#lastName").value,
     address: document.querySelector("#address").value,
     city: document.querySelector("#city").value,
-    email: document.querySelector("#e-mail").value,
+    email: document.querySelector("#email").value,
   };
 
   function controlForm() {
@@ -288,8 +287,8 @@ btnSubmit.addEventListener("click", (event) => {
       return response.json();
     })
     .then(function (r) {
-      window.location.assign("confirmation.html?orderId=" + r.orderId);
       localStorage.setItem("contact", JSON.stringify(r.contact));
+      window.location.assign("confirmation.html?orderId=" + r.orderId);
     })
     //SI PROBLEME API
     .catch(function (err) {
@@ -297,18 +296,12 @@ btnSubmit.addEventListener("click", (event) => {
     });
 });
 
-///// mettre le formulaire et les produits du panier pour les envoyé vers le serveurs
-///envoie de l'objet au serveur
-// console.log(promise01);
-// });
+//Garder les valeurs dans le formulaire
 const dataLocalStorage = localStorage.getItem("contact");
-// ///Garder les valeurs dans le formulaire
-// //Convertir la chaine de caractere en objet javascript
+//Convertir la chaine de caractere en objet javascript
 const dataLocalStorageObjet = JSON.parse(dataLocalStorage);
-// console.log(dataLocalStorageObjet);
 
-// //mettre les values du local storage dans les champs du formulaire
-
+//mettre les values du local storage dans les champs du formulaire
 function remplirInputDepuisLocalStorage(input) {
   document.querySelector(`#${input}`).value = dataLocalStorageObjet[input];
 }
@@ -317,6 +310,6 @@ remplirInputDepuisLocalStorage("firstName");
 remplirInputDepuisLocalStorage("lastName");
 remplirInputDepuisLocalStorage("address");
 remplirInputDepuisLocalStorage("city");
-remplirInputDepuisLocalStorage("e-mail");
+remplirInputDepuisLocalStorage("email");
 
-///////////////////////////Fin/////////////////////////////////////////////////
+

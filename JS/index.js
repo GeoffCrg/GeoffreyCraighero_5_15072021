@@ -1,6 +1,6 @@
 const MAIN_URL = "http://localhost:3000/api/cameras";
-// const MAIN_URL = "http://localhost:3000/api/cameras/id";
 
+// Appel fetch recuperation des cameras
 fetch(MAIN_URL)
   .then((response) => response.json())
   .then(function (listeProduct) {
