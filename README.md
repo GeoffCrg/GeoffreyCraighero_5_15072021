@@ -6,10 +6,10 @@
 
 Pour visualiser le projet veuillez suivre les instructions ci-dessous
 
-1-Cloner le repertoire 
-2-L'ouvrir dans votre editeur de code 
-3-Ouvrir un nouveau terminal
-4-rentrer :cd back-end puis node server pour lancer l'API
+* 1-Cloner le repertoire 
+* 2-L'ouvrir dans votre editeur de code 
+* 3-Ouvrir un nouveau terminal
+* 4-rentrer :cd back-end puis node server pour lancer l'API
 
 ## Presentation du projet
 
