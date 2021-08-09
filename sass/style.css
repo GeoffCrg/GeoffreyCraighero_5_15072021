@@ -740,8 +740,6 @@ nav #panier::after {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100%;
-  -o-object-fit: none;
-     object-fit: none;
   margin-bottom: 50px;
 }
 

@@ -38,14 +38,12 @@ if (camera === null || camera == 0) {
         
         
       `;
+  }
 
-    }
-    
-    // Boucle pour ajouter chaque cameras
+  // Boucle pour ajouter chaque cameras
   if (i === camera.length) {
     displayPanier.innerHTML = structureProduitPanier;
   }
-
 }
 
 //Gestion du boutton pour supprimer l'article
@@ -114,7 +112,6 @@ displayPanier.insertAdjacentHTML("beforeend", affichageprixTotal);
 //Affichage du formulaire
 
 const addHTMLFormulaire = () => {
-  
   const DOMFormulaire = document.querySelector("#containerFormulaire");
 
   const displayFormulaire = `
@@ -151,7 +148,7 @@ const btnSubmit = document.querySelector("#envoyerFormulaire");
 
 for (let i = 2; i < camera.length; i++) {
   addIdBasket.push(camera[i].idProduit);
-  
+
   console.log(addIdBasket);
 }
 
@@ -208,7 +205,7 @@ btnSubmit.addEventListener("click", (event) => {
         document.querySelector("#lastNameManquant").textContent = "";
         return true;
       } else {
-        document.querySelector("#LastNameManquant").textContent =
+        document.querySelector("#lastNameManquant").textContent =
           "Veuillez bien remplir ce champ";
         return false;
       }
@@ -257,8 +254,31 @@ btnSubmit.addEventListener("click", (event) => {
       controlEmail()
     ) {
       //Mettre l'objet contact dans le local storage
-
       localStorage.setItem("contact", JSON.stringify(contact));
+      let products = addIdBasket;
+      const sendOrder = JSON.stringify({
+        contact,
+        products,
+      });
+      fetch("http://localhost:3000/api/cameras/order", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        mode: "cors",
+        body: sendOrder,
+      })
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (r) {
+          localStorage.setItem("contact", JSON.stringify(r.contact));
+          window.location.assign("confirmation.html?orderId=" + r.orderId);
+        })
+        //SI PROBLEME API
+        .catch(function (err) {
+          console.log("fetch Error");
+        });
     } else {
       document.querySelector("#verifFormulaire").textContent =
         "Veuillez bien remplir le formulaire";
@@ -266,34 +286,11 @@ btnSubmit.addEventListener("click", (event) => {
     }
   }
   controlForm();
-  let products = addIdBasket;
-  const sendOrder = JSON.stringify({
-    contact,
-    products,
-  });
+
   localStorage.setItem("prixTotal", JSON.stringify(prixTotal));
   console.log(sendOrder);
 
-  // APEL API AVEC FETCH // ENVOIE DES DONNEES AVEC POST
-  fetch("http://localhost:3000/api/cameras/order", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-    },
-    mode: "cors",
-    body: sendOrder,
-  })
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (r) {
-      localStorage.setItem("contact", JSON.stringify(r.contact));
-      window.location.assign("confirmation.html?orderId=" + r.orderId);
-    })
-    //SI PROBLEME API
-    .catch(function (err) {
-      console.log("fetch Error");
-    });
+  // APEL api avec fetch requete post
 });
 
 //Garder les valeurs dans le formulaire
@@ -311,5 +308,3 @@ remplirInputDepuisLocalStorage("lastName");
 remplirInputDepuisLocalStorage("address");
 remplirInputDepuisLocalStorage("city");
 remplirInputDepuisLocalStorage("email");
-
-
